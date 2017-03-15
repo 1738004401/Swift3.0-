@@ -1,0 +1,18 @@
+platform :ios, ‘8.1’
+
+target ‘SwiftCW’ do
+pod 'AFNetworking', '~> 3.1.0'
+pod 'SDWebImage', '~> 3.8.2'
+pod 'MJExtension', '~> 3.0.13'
+pod 'MJRefresh', '~> 3.1.12'
+pod 'SVProgressHUD', '~> 2.0.3'
+pod 'MBProgressHUD', '~> 0.9.2'
+pod 'RegexKitLite'
+pod 'FMDB', '~> 2.6.2'
+pod 'YYKit', '~> 1.0.9'
+pod 'IQKeyboardManager'
+
+use_frameworks!
+pod 'SnapKit', '~> 3.0.2'
+end
+

@@ -9,5 +9,16 @@
 import UIKit
 
 class SWHomeLayoutModel: NSObject {
-
+    public var statusModel : SWHomeStatusModel?
+    
+    
+    init(status:SWHomeStatusModel) {
+        super.init()
+        statusModel = status
+    }
+    
+    override init() {
+        super.init()
+    }
+    
 }
