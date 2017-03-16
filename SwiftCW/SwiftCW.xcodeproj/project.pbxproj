@@ -10,6 +10,9 @@
 		0F22336F1E78C88000328EBA /* SWHomeLayoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F22336E1E78C88000328EBA /* SWHomeLayoutModel.swift */; };
 		0F2233741E78CB1D00328EBA /* SWUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2233731E78CB1D00328EBA /* SWUser.swift */; };
 		0F2233761E78CBA800328EBA /* SWLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2233751E78CBA800328EBA /* SWLoginController.swift */; };
+		0F330B211E7A5A180042AA8C /* EmoticonWeibo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0F330B201E7A5A180042AA8C /* EmoticonWeibo.bundle */; };
+		0F330B251E7A77AE0042AA8C /* SWHomeStatusProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F330B241E7A77AE0042AA8C /* SWHomeStatusProfileView.swift */; };
+		0F330B271E7A83C40042AA8C /* SWStautsUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F330B261E7A83C40042AA8C /* SWStautsUser.swift */; };
 		0F3A6A171E7820270012F047 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3A6A161E7820270012F047 /* AppDelegate.swift */; };
 		0F3A6A1E1E7820270012F047 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F3A6A1D1E7820270012F047 /* Assets.xcassets */; };
 		0F3A6A211E7820270012F047 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F3A6A1F1E7820270012F047 /* LaunchScreen.storyboard */; };
@@ -45,6 +48,8 @@
 		0F3A6A721E7821120012F047 /* tabbar_profile_highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F3A6A591E7821120012F047 /* tabbar_profile_highlighted@2x.png */; };
 		0F3A6A731E7821120012F047 /* tabbar_profile_highlighted@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F3A6A5A1E7821120012F047 /* tabbar_profile_highlighted@3x.png */; };
 		0F3A6A7A1E7837080012F047 /* SWHomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3A6A791E7837080012F047 /* SWHomeTableViewCell.swift */; };
+		0F5832621E7A39190092D75B /* SWHomeViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5832611E7A39190092D75B /* SWHomeViewControllers.swift */; };
+		0F5832681E7A552D0092D75B /* BaseWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5832671E7A552D0092D75B /* BaseWebViewController.swift */; };
 		0F84590E1E790665007F6C8E /* WBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8459031E790665007F6C8E /* WBModel.m */; };
 		0F84590F1E790665007F6C8E /* WBStatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8459051E790665007F6C8E /* WBStatusCell.m */; };
 		0F8459101E790665007F6C8E /* WBStatusHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8459071E790665007F6C8E /* WBStatusHelper.m */; };
@@ -61,6 +66,9 @@
 		0F22336E1E78C88000328EBA /* SWHomeLayoutModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWHomeLayoutModel.swift; sourceTree = "<group>"; };
 		0F2233731E78CB1D00328EBA /* SWUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWUser.swift; sourceTree = "<group>"; };
 		0F2233751E78CBA800328EBA /* SWLoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWLoginController.swift; sourceTree = "<group>"; };
+		0F330B201E7A5A180042AA8C /* EmoticonWeibo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = EmoticonWeibo.bundle; sourceTree = "<group>"; };
+		0F330B241E7A77AE0042AA8C /* SWHomeStatusProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWHomeStatusProfileView.swift; sourceTree = "<group>"; };
+		0F330B261E7A83C40042AA8C /* SWStautsUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWStautsUser.swift; sourceTree = "<group>"; };
 		0F3A6A131E7820270012F047 /* SwiftCW.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftCW.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F3A6A161E7820270012F047 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0F3A6A1D1E7820270012F047 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
@@ -99,6 +107,8 @@
 		0F3A6A5A1E7821120012F047 /* tabbar_profile_highlighted@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_profile_highlighted@3x.png"; sourceTree = "<group>"; };
 		0F3A6A791E7837080012F047 /* SWHomeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWHomeTableViewCell.swift; sourceTree = "<group>"; };
 		0F3A6A801E783F140012F047 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		0F5832611E7A39190092D75B /* SWHomeViewControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SWHomeViewControllers.swift; path = ../Views/Home/SWHomeViewControllers.swift; sourceTree = "<group>"; };
+		0F5832671E7A552D0092D75B /* BaseWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseWebViewController.swift; sourceTree = "<group>"; };
 		0F8459021E790665007F6C8E /* WBModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBModel.h; sourceTree = "<group>"; };
 		0F8459031E790665007F6C8E /* WBModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBModel.m; sourceTree = "<group>"; };
 		0F8459041E790665007F6C8E /* WBStatusCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBStatusCell.h; sourceTree = "<group>"; };
@@ -134,6 +144,7 @@
 			children = (
 				0F22336E1E78C88000328EBA /* SWHomeLayoutModel.swift */,
 				0F8459161E790AAC007F6C8E /* SWHomeStatusModel.swift */,
+				0F330B261E7A83C40042AA8C /* SWStautsUser.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -232,6 +243,7 @@
 				0F3A6A301E7820770012F047 /* BaseNavigationController.swift */,
 				0F3A6A311E7820770012F047 /* BaseViewController.swift */,
 				0F3A6A321E7820770012F047 /* RootTabBarController.swift */,
+				0F5832671E7A552D0092D75B /* BaseWebViewController.swift */,
 			);
 			path = RootViewControllers;
 			sourceTree = "<group>";
@@ -254,6 +266,7 @@
 		0F3A6A361E7820770012F047 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				0F5832611E7A39190092D75B /* SWHomeViewControllers.swift */,
 				0F3A6A1D1E7820270012F047 /* Assets.xcassets */,
 				0F3A6A1F1E7820270012F047 /* LaunchScreen.storyboard */,
 				0F3A6A221E7820270012F047 /* Info.plist */,
@@ -265,6 +278,7 @@
 		0F3A6A371E7820770012F047 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				0F330B201E7A5A180042AA8C /* EmoticonWeibo.bundle */,
 				0F3A6A411E7821120012F047 /* Tabbar */,
 			);
 			path = Resource;
@@ -329,6 +343,7 @@
 			isa = PBXGroup;
 			children = (
 				0F3A6A791E7837080012F047 /* SWHomeTableViewCell.swift */,
+				0F330B241E7A77AE0042AA8C /* SWHomeStatusProfileView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -453,6 +468,7 @@
 				0F3A6A651E7821120012F047 /* tabbar_discover@3x.png in Resources */,
 				0F3A6A661E7821120012F047 /* tabbar_discover_highlighted@2x.png in Resources */,
 				0F3A6A671E7821120012F047 /* tabbar_discover_highlighted@3x.png in Resources */,
+				0F330B211E7A5A180042AA8C /* EmoticonWeibo.bundle in Resources */,
 				0F3A6A5B1E7821120012F047 /* tabbar_background@2x.png in Resources */,
 				0F3A6A6D1E7821120012F047 /* tabbar_message_center@3x.png in Resources */,
 				0F3A6A691E7821120012F047 /* tabbar_home@3x.png in Resources */,
@@ -521,18 +537,22 @@
 				0F3A6A3E1E7820770012F047 /* BaseViewController.swift in Sources */,
 				0F3A6A3F1E7820770012F047 /* RootTabBarController.swift in Sources */,
 				0F8459101E790665007F6C8E /* WBStatusHelper.m in Sources */,
+				0F5832681E7A552D0092D75B /* BaseWebViewController.swift in Sources */,
 				0F2233761E78CBA800328EBA /* SWLoginController.swift in Sources */,
 				0F2233741E78CB1D00328EBA /* SWUser.swift in Sources */,
 				0F3A6A7A1E7837080012F047 /* SWHomeTableViewCell.swift in Sources */,
 				0F3A6A3D1E7820770012F047 /* BaseNavigationController.swift in Sources */,
 				0F8459151E790940007F6C8E /* Nothing.swift in Sources */,
+				0F330B251E7A77AE0042AA8C /* SWHomeStatusProfileView.swift in Sources */,
 				0F8459111E790665007F6C8E /* WBStatusLayout.m in Sources */,
 				0F22336F1E78C88000328EBA /* SWHomeLayoutModel.swift in Sources */,
+				0F330B271E7A83C40042AA8C /* SWStautsUser.swift in Sources */,
 				0F8459131E790665007F6C8E /* YYTableViewCell.m in Sources */,
 				0F8459121E790665007F6C8E /* YYControl.m in Sources */,
 				0F84590F1E790665007F6C8E /* WBStatusCell.m in Sources */,
 				0F3A6A171E7820270012F047 /* AppDelegate.swift in Sources */,
 				0F3A6A3C1E7820770012F047 /* SWHomeViewController.swift in Sources */,
+				0F5832621E7A39190092D75B /* SWHomeViewControllers.swift in Sources */,
 				0F8459171E790AAC007F6C8E /* SWHomeStatusModel.swift in Sources */,
 				0F3A6A401E7820770012F047 /* GlobalConst.swift in Sources */,
 				0F84590E1E790665007F6C8E /* WBModel.m in Sources */,

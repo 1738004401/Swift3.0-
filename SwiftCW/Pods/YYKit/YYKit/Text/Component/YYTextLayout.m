@@ -366,7 +366,11 @@ dispatch_semaphore_signal(_lock);
 + (YYTextLayout *)layoutWithContainer:(YYTextContainer *)container text:(NSAttributedString *)text {
     return [self layoutWithContainer:container text:text range:NSMakeRange(0, text.length)];
 }
-
++ (nullable YYTextLayout *)sw_layoutWithContainer:(YYTextContainer *)container
+                                             text:(NSAttributedString *)text
+{
+    return  [self layoutWithContainer:container text:text];
+}
 + (YYTextLayout *)layoutWithContainer:(YYTextContainer *)container text:(NSAttributedString *)text range:(NSRange)range {
     YYTextLayout *layout = NULL;
     CGPathRef cgPath = nil;

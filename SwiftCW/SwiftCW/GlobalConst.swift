@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import YYKit
 
 
 /**
@@ -41,6 +42,18 @@ let WB_redirect_uri = "http://www.520it.com"
 /*UserDefault **/
 
 let SWUserJson = "SWUserJson"
+
+// 颜色
+let kWBCellTextNormalColor:UIColor =  UIColor.init(hexString:"333333")!
+let kWBCellTextSubTitleColor:UIColor =  UIColor.init(hexString:"5d5d5d")!
+let kWBCellTextHighlightColor:UIColor =  UIColor.init(hexString:"527ead")!
+let kWBCellTextHighlightBackgroundColor:UIColor =  UIColor.init(hexString:"bfdffe")!
+let kWBCellBackgroundColor:UIColor = UIColor.init(hexString:"f2f2f2")!    // Cell背景灰色
+let kWBCellHighlightColor:UIColor = UIColor.init(hexString:"f0f0f0")!     // Cell高亮时灰色
+let kWBCellInnerViewColor:UIColor = UIColor.init(hexString:"f7f7f7")!   // Cell内部卡片灰色
+
+let kWBCellPadding:CGFloat = 10.0
+
 
 
 

@@ -50,6 +50,8 @@
 /// 话题正则 例如 #暖暖环游世界#
 + (NSRegularExpression *)regexTopic;
 
++ (NSRegularExpression *)regexUrl;
+
 /// 表情正则 例如 [偷笑]
 + (NSRegularExpression *)regexEmoticon;
 

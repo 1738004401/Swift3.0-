@@ -10,4 +10,5 @@
 #define Bridging_Header_h
 
 #import "WBStatusCell.h"
+#import "WBStatusLayout.h"
 #endif /* Bridging_Header_h */

@@ -12,9 +12,16 @@ import YYKit
 
 let kCellIdentifier_SWHomeTableViewCell = "SWHomeTableViewCell"
 
+@objc
+public protocol SWHomeTableViewCellDelegate{
+    @objc optional func cellLinkClicked(containerView:UIView, text:NSAttributedString, range:NSRange, rect:CGRect)
+}
+
 class SWHomeTableViewCell: UITableViewCell {
 
+    open var delegate:SWHomeTableViewCellDelegate?
     var labelHeight : Constraint?
+    var profileView : SWHomeStatusProfileView!
     
     var statusLayout : SWHomeLayoutModel?
     {
@@ -22,20 +29,18 @@ class SWHomeTableViewCell: UITableViewCell {
             let container = YYTextContainer();
             container.size = CGSize.init(width: kScreen_Width, height: CGFloat.greatestFiniteMagnitude);
             
-            let str = statusLayout?.statusModel?.text
-            let attr = NSAttributedString.init(string: str!)
-            let text_layout = YYTextLayout(container: container, text: attr)
-            print(text_layout?.rowCount)
-            labelHeight?.update(offset: 20*(text_layout?.rowCount)!)
-            content_label.textLayout = text_layout
+            labelHeight?.update(offset: (statusLayout?.textHeight)!)
+            content_label.textLayout = statusLayout?.textLayout
+            profileView.statusModel = statusLayout?.statusModel
         }
     }
     private lazy var content_label:YYLabel = {
         let label = YYLabel()
-        label.textVerticalAlignment = YYTextVerticalAlignment.top;
-        label.displaysAsynchronously = true;
-        label.fadeOnAsynchronouslyDisplay = false;
-        label.fadeOnHighlight = false;
+        label.textVerticalAlignment = YYTextVerticalAlignment.top
+        label.displaysAsynchronously = true
+        label.fadeOnAsynchronouslyDisplay = false
+        label.fadeOnHighlight = false
+        label.backgroundColor = UIColor.white
         return label
     }()
     
@@ -44,11 +49,30 @@ class SWHomeTableViewCell: UITableViewCell {
         setupUI()
     }
     
-    private func setupUI(){
+    private func setupUI(){//(^YYTextAction)(UIView *containerView, NSAttributedString *text, NSRange range, CGRect rect)
+
+        //1.0 顶部
+        profileView = SWHomeStatusProfileView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        contentView.addSubview(profileView)
+        profileView.snp.makeConstraints { (make) in
+            make.top.left.right.equalTo(0)
+        }
         
+        //2.0 status
+        let highlightTapAction:YYTextAction?
+        highlightTapAction = {
+            (containerView:UIView, text:NSAttributedString, range:NSRange, rect:CGRect) in
+             self.delegate?.cellLinkClicked!(containerView: containerView, text: text, range: range, rect: rect)
+            
+        }
+        content_label.highlightTapAction = highlightTapAction;
         contentView.addSubview(content_label)
+        contentView.backgroundColor = UIColor.white
         content_label.snp.makeConstraints { (make) in
-            make.edges.equalTo(0).inset(UIEdgeInsetsMake(10, 10, 10, 10))
+            make.top.equalTo(profileView.snp.bottom)
+            make.left.equalTo(kWBCellPadding)
+            make.right.equalTo(-kWBCellPadding)
+            make.bottom.equalTo(0)
             labelHeight =  make.height.equalTo(100).priority(800).constraint
             
         }

@@ -10,6 +10,7 @@ import UIKit
 import SnapKit
 import AFNetworking
 import MJExtension
+import YYKit
 
 
 
@@ -36,6 +37,9 @@ class SWHomeViewController:BaseViewController  {
         tableView.delegate = self
         tableView.estimatedRowHeight = 75.0
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        tableView.backgroundColor = UIColor.clear
+//        tableView.backgroundView?.backgroundColor = UIColor.clear;
+//        self.view.backgroundColor = kWBCellBackgroundColor;
         view.addSubview(tableView)
         tableView.snp.makeConstraints { (make) in
             make.top.equalTo(kNavgation_Status_Height)
@@ -92,7 +96,7 @@ class SWHomeViewController:BaseViewController  {
 
     
 }
-extension SWHomeViewController:UITableViewDataSource,UITableViewDelegate{
+extension SWHomeViewController:UITableViewDataSource,UITableViewDelegate,SWHomeTableViewCellDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.layouts.count;
     }
@@ -100,7 +104,53 @@ extension SWHomeViewController:UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:SWHomeTableViewCell = tableView.dequeueReusableCell(withIdentifier: kCellIdentifier_SWHomeTableViewCell, for: indexPath) as! SWHomeTableViewCell
         cell.statusLayout = layouts[indexPath.row] as? SWHomeLayoutModel
+        cell.delegate = self
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    func cellLinkClicked(containerView: UIView, text: NSAttributedString, range: NSRange, rect: CGRect) {
+        let highlight:YYTextHighlight? = text.attribute(YYTextHighlightAttributeName, at: UInt(range.location)) as? YYTextHighlight
+        let info = highlight?.userInfo;
+        
+        if (info?.count == 0) {
+            return
+        }
+        
+        
+        
+        if ((info?[kWBLinkTopicName]) != nil) {
+            let name:NSString! = info?[kWBLinkTopicName] as! NSString
+            if (name.length > 0) {//NSString stringWithFormat:@"http://m.weibo.cn/n/%@",name;
+                let url:String?  = "http://m.weibo.cn/n/".appending((name as? String)!)
+            }
+            return;
+        }
+        if ((info?[kWBLinkURLName]) != nil) {
+            let name:String! = info?[kWBLinkURLName] as! String!
+            let webController =  BaseWebViewController()
+            webController.urlString = name
+            webController.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(webController, animated: true)
+            
+            return;
+        }
+
+        
+//        if (info[kWBLinkAtName]) {
+//            NSString *name = info[kWBLinkAtName];
+//            name = [name stringByURLEncode];
+//            if (name.length) {
+//                NSString *url = [NSString stringWithFormat:@"http://m.weibo.cn/n/%@",name];
+//                YYSimpleWebViewController *vc = [[YYSimpleWebViewController alloc] initWithURL:[NSURL URLWithString:url]];
+//                [self.navigationController pushViewController:vc animated:YES];
+//            }
+//            return;
+//        }
+
+
     }
     
 }

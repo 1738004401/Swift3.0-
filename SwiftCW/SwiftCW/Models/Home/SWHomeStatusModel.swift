@@ -41,12 +41,13 @@ class SWHomeStatusModel: NSObject {
     var source : String?
     var source_allowclick : Bool?
     var source_type : Int?
-    var text : String?
+    var text : NSString?
     var textLength : Int?
     var text_tag_tips : [AnyObject]?
     var thumbnail_pic : NSDictionary?
     var truncated : Int?
     var userType : Int?
+    var user : SWStautsUser?
     override init(){
         super.init()
     }

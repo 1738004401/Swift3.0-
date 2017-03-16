@@ -176,6 +176,9 @@ extern const CGSize YYTextContainerMaxSize;
 + (nullable YYTextLayout *)layoutWithContainer:(YYTextContainer *)container
                                           text:(NSAttributedString *)text;
 
++ (nullable YYTextLayout *)sw_layoutWithContainer:(YYTextContainer *)container
+                                          text:(NSAttributedString *)text;
+
 /**
  Generate a layout with the given container and text.
  
