@@ -51,8 +51,14 @@ let kWBCellTextHighlightBackgroundColor:UIColor =  UIColor.init(hexString:"bfdff
 let kWBCellBackgroundColor:UIColor = UIColor.init(hexString:"f2f2f2")!    // Cell背景灰色
 let kWBCellHighlightColor:UIColor = UIColor.init(hexString:"f0f0f0")!     // Cell高亮时灰色
 let kWBCellInnerViewColor:UIColor = UIColor.init(hexString:"f7f7f7")!   // Cell内部卡片灰色
+let kWBCellNameNormalColor:UIColor = UIColor.init(hexString:"333333")!
+let kWBCellNameOrangeColor:UIColor = UIColor.init(hexString:"f26220")!
+let kWBCellTimeNormalColor:UIColor = UIColor.init(hexString:"828282")!
+let kWBCellTimeOrangeColor:UIColor = UIColor.init(hexString:"f28824")!
+
 
 let kWBCellPadding:CGFloat = 10.0
+let kWBCellNameWidth:CGFloat = (kScreen_Width - 110.0)
 
 
 

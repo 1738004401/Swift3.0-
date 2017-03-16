@@ -14,7 +14,7 @@ class SWHomeStatusModel: NSObject {
     var bmiddle_pic : String?
     var cardid : String?
     var comments_count : Int?
-    var created_at : String?
+    var created_at : Date?
     var darwin_tags : [AnyObject]?
     var favorited : Int?
     var geo : String?
@@ -38,8 +38,8 @@ class SWHomeStatusModel: NSObject {
     var positive_recom_flag : Int?
     var reposts_count : Int?
     var rid : String?
-    var source : String?
-    var source_allowclick : Bool?
+    var source : NSString?
+    var source_allowclick : Int?
     var source_type : Int?
     var text : NSString?
     var textLength : Int?

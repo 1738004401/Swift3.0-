@@ -31,7 +31,7 @@ class SWHomeTableViewCell: UITableViewCell {
             
             labelHeight?.update(offset: (statusLayout?.textHeight)!)
             content_label.textLayout = statusLayout?.textLayout
-            profileView.statusModel = statusLayout?.statusModel
+            profileView.statusLayoutModel = statusLayout!
         }
     }
     private lazy var content_label:YYLabel = {
@@ -46,6 +46,7 @@ class SWHomeTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
         setupUI()
     }
     

@@ -217,6 +217,25 @@
     });
     return regex;
 }
++ (NSRegularExpression *)regexHref {
+    static NSRegularExpression *regex;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        regex = [NSRegularExpression regularExpressionWithPattern:@"(?<=href=\").+(?=\" )" options:kNilOptions error:NULL];
+    });
+    return regex;
+}
+
++ (NSRegularExpression *)regexText {
+    static NSRegularExpression *regex;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        regex = [NSRegularExpression regularExpressionWithPattern:@"(?<=>).+(?=<)" options:kNilOptions error:NULL];
+    });
+    return regex;
+}
+
+
 
 + (NSDictionary *)emoticonDic {
     static NSMutableDictionary *dic;

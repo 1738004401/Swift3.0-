@@ -52,6 +52,10 @@
 
 + (NSRegularExpression *)regexUrl;
 
++ (NSRegularExpression *)regexText;
+
++ (NSRegularExpression *)regexHref;
+
 /// 表情正则 例如 [偷笑]
 + (NSRegularExpression *)regexEmoticon;
 
