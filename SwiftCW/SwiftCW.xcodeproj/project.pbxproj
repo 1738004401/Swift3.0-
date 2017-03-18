@@ -58,6 +58,7 @@
 		0F8459131E790665007F6C8E /* YYTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F84590D1E790665007F6C8E /* YYTableViewCell.m */; };
 		0F8459151E790940007F6C8E /* Nothing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8459141E790940007F6C8E /* Nothing.swift */; };
 		0F8459171E790AAC007F6C8E /* SWHomeStatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8459161E790AAC007F6C8E /* SWHomeStatusModel.swift */; };
+		0FB179C11E7D80C3008D58C2 /* BaseHTTPMethodTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB179C01E7D80C3008D58C2 /* BaseHTTPMethodTool.swift */; };
 		79DA9625B12F26C3DB90CC8D /* Pods_SwiftCW.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8612A8BB3EF1A3AAEFE0DAC /* Pods_SwiftCW.framework */; };
 /* End PBXBuildFile section */
 
@@ -123,6 +124,7 @@
 		0F84590D1E790665007F6C8E /* YYTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYTableViewCell.m; sourceTree = "<group>"; };
 		0F8459141E790940007F6C8E /* Nothing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Nothing.swift; sourceTree = "<group>"; };
 		0F8459161E790AAC007F6C8E /* SWHomeStatusModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWHomeStatusModel.swift; sourceTree = "<group>"; };
+		0FB179C01E7D80C3008D58C2 /* BaseHTTPMethodTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseHTTPMethodTool.swift; sourceTree = "<group>"; };
 		A9D042A10F21A9A7FFF731BA /* Pods-SwiftCW.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftCW.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftCW/Pods-SwiftCW.release.xcconfig"; sourceTree = "<group>"; };
 		B8612A8BB3EF1A3AAEFE0DAC /* Pods_SwiftCW.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftCW.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -295,6 +297,7 @@
 		0F3A6A391E7820770012F047 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				0FB179C01E7D80C3008D58C2 /* BaseHTTPMethodTool.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -539,6 +542,7 @@
 				0F8459101E790665007F6C8E /* WBStatusHelper.m in Sources */,
 				0F5832681E7A552D0092D75B /* BaseWebViewController.swift in Sources */,
 				0F2233761E78CBA800328EBA /* SWLoginController.swift in Sources */,
+				0FB179C11E7D80C3008D58C2 /* BaseHTTPMethodTool.swift in Sources */,
 				0F2233741E78CB1D00328EBA /* SWUser.swift in Sources */,
 				0F3A6A7A1E7837080012F047 /* SWHomeTableViewCell.swift in Sources */,
 				0F3A6A3D1E7820770012F047 /* BaseNavigationController.swift in Sources */,

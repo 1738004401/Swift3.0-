@@ -113,6 +113,7 @@
         formatterFullDate = [[NSDateFormatter alloc] init];
         [formatterFullDate setDateFormat:@"yy-M-dd"];
         [formatterFullDate setLocale:[NSLocale currentLocale]];
+        
     });
     
     NSDate *now = [NSDate new];

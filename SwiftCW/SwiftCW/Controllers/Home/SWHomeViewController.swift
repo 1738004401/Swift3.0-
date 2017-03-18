@@ -119,8 +119,6 @@ extension SWHomeViewController:UITableViewDataSource,UITableViewDelegate,SWHomeT
             return
         }
         
-        
-        
         if ((info?[kWBLinkTopicName]) != nil) {
             let name:NSString! = info?[kWBLinkTopicName] as! NSString
             if (name.length > 0) {//NSString stringWithFormat:@"http://m.weibo.cn/n/%@",name;

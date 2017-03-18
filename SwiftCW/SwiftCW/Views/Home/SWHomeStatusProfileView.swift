@@ -25,7 +25,7 @@ class SWHomeStatusProfileView: UIView {
         topGrayLine.snp.makeConstraints { (make) in
             make.top.equalTo(0)
             make.left.right.equalTo(0)
-            make.height.equalTo(8)
+            make.height.equalTo(10)
             
         }
         
@@ -37,7 +37,7 @@ class SWHomeStatusProfileView: UIView {
         avatarView.snp.makeConstraints { (make) in
             make.top.equalTo(topGrayLine.snp.bottom).offset(8)
             make.left.equalTo(kWBCellPadding)
-            make.width.height.equalTo(40)
+            make.width.height.equalTo(45)
             make.bottom.equalTo(-8)
         }
         
@@ -45,7 +45,7 @@ class SWHomeStatusProfileView: UIView {
         avatarBorder.frame = avatarView.bounds;
         avatarBorder.borderWidth = CGFloatFromPixel(1);
         avatarBorder.borderColor = UIColor.white.cgColor
-        avatarBorder.cornerRadius = 40.0/2.0;
+        avatarBorder.cornerRadius = 45.0/2.0;
         avatarBorder.shouldRasterize = true;
         avatarBorder.rasterizationScale = YYScreenScale()
         avatarView.layer.addSublayer(avatarBorder)

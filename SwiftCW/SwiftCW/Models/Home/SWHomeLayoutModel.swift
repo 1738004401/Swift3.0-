@@ -43,9 +43,11 @@ class SWHomeLayoutModel: NSObject {
     }
     
     private func layoutSource(){
-        let sourceText:NSMutableAttributedString = NSMutableAttributedString();
-        let createTime:NSString = WBStatusHelper.string(withTimelineDate: statusModel?.created_at) as NSString
+        let sourceText:NSMutableAttributedString = NSMutableAttributedString()
+//        let createTime:NSString = WBStatusHelper.string(withTimelineDate: statusModel?.created_at) as NSString
+//        print(statusModel.created_at)
         
+        let createTime:NSString = WBStatusHelper.string(withTimelineDate: Date.init(timeIntervalSinceNow: 0)) as NSString
         // 时间
         if createTime.length > 0 {
             let timeText:NSMutableAttributedString! = NSMutableAttributedString.init(string: createTime as! String)
@@ -90,17 +92,6 @@ class SWHomeLayoutModel: NSObject {
                         let range:NSRange = NSRange.init(location: 3, length: text.lengthOfBytes(using: String.Encoding.init(rawValue: 0)))
                         
                         from.setColor(UIColor.orange, range: range)
-                        
-                        
-                        
-                        //                    let border:YYTextBorder = YYTextBorder()
-                        //                    border.insets = UIEdgeInsetsMake(-2, 0, -2, 0);
-                        //                    border.fillColor = kWBCellTextHighlightBackgroundColor;
-                        //                    border.cornerRadius = 3;
-                        //                    YYTextHighlight *highlight = [YYTextHighlight new];
-                        //                    if (href) highlight.userInfo = @{kWBLinkHrefName : href};
-                        //                    [highlight setBackgroundBorder:border];
-                        //                    [from setTextHighlight:highlight range:range];
                     }
 
                 }
