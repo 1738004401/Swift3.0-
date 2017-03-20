@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.makeKeyAndVisible()
 
+        DAOManager.shareManager().openDB(DBName: "swSqlite.sqlite")
         return true
     }
 

@@ -11,15 +11,28 @@ import SnapKit
 import AFNetworking
 import MJExtension
 import YYKit
+import MJRefresh
 
 
 
 
 class SWHomeViewController:BaseViewController  {
 
-    let tableView:UITableView = {
+    private lazy var tableView:UITableView = {
         let tableView = UITableView()
         tableView.register(SWHomeTableViewCell.self, forCellReuseIdentifier: kCellIdentifier_SWHomeTableViewCell)
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.estimatedRowHeight = 75.0
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        tableView.backgroundColor = UIColor.clear
+        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+            self.loadHttp(type: RefreshType.refreshTypeTop)
+        })
+        tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: {
+            self.loadHttp(type: RefreshType.refreshTypeBottom)
+        })
+
         
         return tableView
     }()
@@ -31,16 +44,10 @@ class SWHomeViewController:BaseViewController  {
         setupUI()
         loadHttp(type: RefreshType.refreshTypeTop)
     }
+    
     private func setupUI() {
+        self.view.addSubview(tableView)
         
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.estimatedRowHeight = 75.0
-        tableView.separatorStyle = UITableViewCellSeparatorStyle.none
-        tableView.backgroundColor = UIColor.clear
-//        tableView.backgroundView?.backgroundColor = UIColor.clear;
-//        self.view.backgroundColor = kWBCellBackgroundColor;
-        view.addSubview(tableView)
         tableView.snp.makeConstraints { (make) in
             make.top.equalTo(kNavgation_Status_Height)
             make.left.right.equalTo(0)
@@ -49,47 +56,50 @@ class SWHomeViewController:BaseViewController  {
         }
 
     }
+    
     private func loadHttp(type:RefreshType){
+        
+        var params:SWHomeStatuesParams!
+        
         switch type {
         case .refreshTypeTop:
+            params = SWHomeStatusBiz.getParams(refretype: RefreshType.refreshTypeTop, statuses: layouts as? [SWHomeLayoutModel])
             break
             
         case .refreshTypeBottom:
+            params = SWHomeStatusBiz.getParams(refretype: RefreshType.refreshTypeBottom, statuses: layouts as? [SWHomeLayoutModel])
             break
             
-       
         }
-        
         //2.0 拼接参数
-        
-        let url = URL(string: "https://api.weibo.com/")
-        let manager = AFHTTPSessionManager.init(baseURL: url)
-        
-        manager.responseSerializer.acceptableContentTypes = NSSet(objects: "application/json", "text/json", "text/javascript", "text/plain") as? Set<String>
-        
-        var params = ["access_token":SWUser.curUser()?.access_token] ;
-        params["since_id"] = "\(0)";
-        
-        let path = "2/statuses/home_timeline.json";
-       
-        manager.get(path, parameters: params, progress: { (_) in
-            
-        }, success: { (task:URLSessionDataTask, json) in
-            let dict : [String:AnyObject] = json as! [String : AnyObject]
-            let temps : [AnyObject] = dict["statuses"] as! [AnyObject]
-            
-            let statues:NSMutableArray = SWHomeStatusModel.mj_objectArray(withKeyValuesArray: temps)
-            
-            for statue in statues{
-                let layout = SWHomeLayoutModel.init(status: statue as! SWHomeStatusModel)
-                self.layouts.add(layout)
+        SWHomeStatusBiz.getStatusesFromSqlite(params: params) { (array) in
+            if array == nil {//网络请求
+                
+                SWHttpManager.requestWeiboTimeline(apath: "https://api.weibo.com/2/statuses/home_timeline.json", params: params, block: { (json, error) in
+                    self.tableView.mj_header.endRefreshing()
+                    self.tableView.mj_footer.endRefreshing()
+                    if error == nil {
+                        
+                        let statues = SWHomeStatusBiz.getStatuses(json: json)
+                        self.layouts = SWHomeStatusBiz.getStatusLayout(refresh:type, originLayouts: self.layouts as! [SWHomeLayoutModel], beAddStatusModeles: statues as! [SWHomeStatusModel]) as! NSMutableArray
+                        
+                        self.tableView.reloadData()
+                    }
+
+                })
+                
+                
+            }else{//数据库
+                
+                self.tableView.mj_header.endRefreshing()
+                self.tableView.mj_footer.endRefreshing()
+                
+               self.layouts =  SWHomeStatusBiz.getStatusLayout(refresh:type, originLayouts: self.layouts as! [SWHomeLayoutModel], beAddStatusModeles: array!) as! NSMutableArray
+                
+                self.tableView.reloadData()
+
+                
             }
-            
-            self.tableView.reloadData()
-            
-            
-        }) { (_, error) in
-            print(error)
         }
 
     }
@@ -135,19 +145,6 @@ extension SWHomeViewController:UITableViewDataSource,UITableViewDelegate,SWHomeT
             
             return;
         }
-
-        
-//        if (info[kWBLinkAtName]) {
-//            NSString *name = info[kWBLinkAtName];
-//            name = [name stringByURLEncode];
-//            if (name.length) {
-//                NSString *url = [NSString stringWithFormat:@"http://m.weibo.cn/n/%@",name];
-//                YYSimpleWebViewController *vc = [[YYSimpleWebViewController alloc] initWithURL:[NSURL URLWithString:url]];
-//                [self.navigationController pushViewController:vc animated:YES];
-//            }
-//            return;
-//        }
-
 
     }
     

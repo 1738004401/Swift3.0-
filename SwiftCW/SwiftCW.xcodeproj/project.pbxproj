@@ -50,6 +50,9 @@
 		0F3A6A7A1E7837080012F047 /* SWHomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3A6A791E7837080012F047 /* SWHomeTableViewCell.swift */; };
 		0F5832621E7A39190092D75B /* SWHomeViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5832611E7A39190092D75B /* SWHomeViewControllers.swift */; };
 		0F5832681E7A552D0092D75B /* BaseWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5832671E7A552D0092D75B /* BaseWebViewController.swift */; };
+		0F5B67031E7E3A3B007CF155 /* SWHomeStatusBiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5B67021E7E3A3B007CF155 /* SWHomeStatusBiz.swift */; };
+		0F5B67051E7E3C76007CF155 /* DAOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5B67041E7E3C76007CF155 /* DAOManager.swift */; };
+		0F5B67071E7E3E57007CF155 /* SWCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5B67061E7E3E57007CF155 /* SWCategory.swift */; };
 		0F84590E1E790665007F6C8E /* WBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8459031E790665007F6C8E /* WBModel.m */; };
 		0F84590F1E790665007F6C8E /* WBStatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8459051E790665007F6C8E /* WBStatusCell.m */; };
 		0F8459101E790665007F6C8E /* WBStatusHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8459071E790665007F6C8E /* WBStatusHelper.m */; };
@@ -59,6 +62,8 @@
 		0F8459151E790940007F6C8E /* Nothing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8459141E790940007F6C8E /* Nothing.swift */; };
 		0F8459171E790AAC007F6C8E /* SWHomeStatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8459161E790AAC007F6C8E /* SWHomeStatusModel.swift */; };
 		0FB179C11E7D80C3008D58C2 /* BaseHTTPMethodTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB179C01E7D80C3008D58C2 /* BaseHTTPMethodTool.swift */; };
+		0FB179C31E7D959B008D58C2 /* SWHttpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB179C21E7D959B008D58C2 /* SWHttpManager.swift */; };
+		0FE23E811E7FDA5F00B052AF /* SWHomeStatuesParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE23E801E7FDA5F00B052AF /* SWHomeStatuesParams.swift */; };
 		79DA9625B12F26C3DB90CC8D /* Pods_SwiftCW.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8612A8BB3EF1A3AAEFE0DAC /* Pods_SwiftCW.framework */; };
 /* End PBXBuildFile section */
 
@@ -110,6 +115,9 @@
 		0F3A6A801E783F140012F047 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		0F5832611E7A39190092D75B /* SWHomeViewControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SWHomeViewControllers.swift; path = ../Views/Home/SWHomeViewControllers.swift; sourceTree = "<group>"; };
 		0F5832671E7A552D0092D75B /* BaseWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseWebViewController.swift; sourceTree = "<group>"; };
+		0F5B67021E7E3A3B007CF155 /* SWHomeStatusBiz.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWHomeStatusBiz.swift; sourceTree = "<group>"; };
+		0F5B67041E7E3C76007CF155 /* DAOManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOManager.swift; sourceTree = "<group>"; };
+		0F5B67061E7E3E57007CF155 /* SWCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWCategory.swift; sourceTree = "<group>"; };
 		0F8459021E790665007F6C8E /* WBModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBModel.h; sourceTree = "<group>"; };
 		0F8459031E790665007F6C8E /* WBModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBModel.m; sourceTree = "<group>"; };
 		0F8459041E790665007F6C8E /* WBStatusCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBStatusCell.h; sourceTree = "<group>"; };
@@ -125,6 +133,8 @@
 		0F8459141E790940007F6C8E /* Nothing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Nothing.swift; sourceTree = "<group>"; };
 		0F8459161E790AAC007F6C8E /* SWHomeStatusModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWHomeStatusModel.swift; sourceTree = "<group>"; };
 		0FB179C01E7D80C3008D58C2 /* BaseHTTPMethodTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseHTTPMethodTool.swift; sourceTree = "<group>"; };
+		0FB179C21E7D959B008D58C2 /* SWHttpManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWHttpManager.swift; sourceTree = "<group>"; };
+		0FE23E801E7FDA5F00B052AF /* SWHomeStatuesParams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWHomeStatuesParams.swift; sourceTree = "<group>"; };
 		A9D042A10F21A9A7FFF731BA /* Pods-SwiftCW.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftCW.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftCW/Pods-SwiftCW.release.xcconfig"; sourceTree = "<group>"; };
 		B8612A8BB3EF1A3AAEFE0DAC /* Pods_SwiftCW.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftCW.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -147,6 +157,7 @@
 				0F22336E1E78C88000328EBA /* SWHomeLayoutModel.swift */,
 				0F8459161E790AAC007F6C8E /* SWHomeStatusModel.swift */,
 				0F330B261E7A83C40042AA8C /* SWStautsUser.swift */,
+				0FE23E801E7FDA5F00B052AF /* SWHomeStatuesParams.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -185,6 +196,7 @@
 				0F3A6A291E7820770012F047 /* Controllers */,
 				0F3A6A3A1E7820770012F047 /* Views */,
 				0F3A6A351E7820770012F047 /* Models */,
+				0F5B67011E7E3975007CF155 /* Business */,
 				0F3A6A281E7820770012F047 /* Category */,
 				0F3A6A371E7820770012F047 /* Resource */,
 				0F3A6A381E7820770012F047 /* Util */,
@@ -200,6 +212,7 @@
 		0F3A6A281E7820770012F047 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				0F5B67061E7E3E57007CF155 /* SWCategory.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -297,7 +310,9 @@
 		0F3A6A391E7820770012F047 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				0FB179C21E7D959B008D58C2 /* SWHttpManager.swift */,
 				0FB179C01E7D80C3008D58C2 /* BaseHTTPMethodTool.swift */,
+				0F5B67041E7E3C76007CF155 /* DAOManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -349,6 +364,14 @@
 				0F330B241E7A77AE0042AA8C /* SWHomeStatusProfileView.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		0F5B67011E7E3975007CF155 /* Business */ = {
+			isa = PBXGroup;
+			children = (
+				0F5B67021E7E3A3B007CF155 /* SWHomeStatusBiz.swift */,
+			);
+			path = Business;
 			sourceTree = "<group>";
 		};
 		0F8459011E790665007F6C8E /* OC */ = {
@@ -542,6 +565,7 @@
 				0F8459101E790665007F6C8E /* WBStatusHelper.m in Sources */,
 				0F5832681E7A552D0092D75B /* BaseWebViewController.swift in Sources */,
 				0F2233761E78CBA800328EBA /* SWLoginController.swift in Sources */,
+				0FE23E811E7FDA5F00B052AF /* SWHomeStatuesParams.swift in Sources */,
 				0FB179C11E7D80C3008D58C2 /* BaseHTTPMethodTool.swift in Sources */,
 				0F2233741E78CB1D00328EBA /* SWUser.swift in Sources */,
 				0F3A6A7A1E7837080012F047 /* SWHomeTableViewCell.swift in Sources */,
@@ -553,14 +577,18 @@
 				0F330B271E7A83C40042AA8C /* SWStautsUser.swift in Sources */,
 				0F8459131E790665007F6C8E /* YYTableViewCell.m in Sources */,
 				0F8459121E790665007F6C8E /* YYControl.m in Sources */,
+				0F5B67031E7E3A3B007CF155 /* SWHomeStatusBiz.swift in Sources */,
+				0F5B67051E7E3C76007CF155 /* DAOManager.swift in Sources */,
 				0F84590F1E790665007F6C8E /* WBStatusCell.m in Sources */,
 				0F3A6A171E7820270012F047 /* AppDelegate.swift in Sources */,
 				0F3A6A3C1E7820770012F047 /* SWHomeViewController.swift in Sources */,
+				0FB179C31E7D959B008D58C2 /* SWHttpManager.swift in Sources */,
 				0F5832621E7A39190092D75B /* SWHomeViewControllers.swift in Sources */,
 				0F8459171E790AAC007F6C8E /* SWHomeStatusModel.swift in Sources */,
 				0F3A6A401E7820770012F047 /* GlobalConst.swift in Sources */,
 				0F84590E1E790665007F6C8E /* WBModel.m in Sources */,
 				0F3A6A3B1E7820770012F047 /* SWComposeViewController.swift in Sources */,
+				0F5B67071E7E3E57007CF155 /* SWCategory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

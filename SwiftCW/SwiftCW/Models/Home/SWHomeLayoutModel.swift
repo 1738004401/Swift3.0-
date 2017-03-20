@@ -44,13 +44,11 @@ class SWHomeLayoutModel: NSObject {
     
     private func layoutSource(){
         let sourceText:NSMutableAttributedString = NSMutableAttributedString()
-//        let createTime:NSString = WBStatusHelper.string(withTimelineDate: statusModel?.created_at) as NSString
-//        print(statusModel.created_at)
+        let createTime:NSString = WBStatusHelper.string(withTimelineDate: statusModel?.created_at_local as Date!) as NSString
         
-        let createTime:NSString = WBStatusHelper.string(withTimelineDate: Date.init(timeIntervalSinceNow: 0)) as NSString
         // 时间
         if createTime.length > 0 {
-            let timeText:NSMutableAttributedString! = NSMutableAttributedString.init(string: createTime as! String)
+            let timeText:NSMutableAttributedString! = NSMutableAttributedString.init(string: createTime as String)
             timeText.appendString("  ")
             timeText.font = UIFont.systemFont(ofSize: CGFloat(kWBCellSourceFontSize))
             timeText.color = UIColor.red;

@@ -69,6 +69,7 @@ extension SWLoginController:UIWebViewDelegate{
         }, success: { (task:URLSessionDataTask, json) in
             print(json ?? "nu")
             UserDefaults.standard.set(json, forKey: SWUserJson)
+            UserDefaults.standard.synchronize()
         }) { (_, error) in
             print(error )
         }
