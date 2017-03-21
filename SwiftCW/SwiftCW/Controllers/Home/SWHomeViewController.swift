@@ -12,12 +12,17 @@ import AFNetworking
 import MJExtension
 import YYKit
 import MJRefresh
+import SVPullToRefresh
+import ODRefreshControl
 
 
 
 
 class SWHomeViewController:BaseViewController  {
 
+    var layouts:NSMutableArray = NSMutableArray()
+    
+    
     private lazy var tableView:UITableView = {
         let tableView = UITableView()
         tableView.register(SWHomeTableViewCell.self, forCellReuseIdentifier: kCellIdentifier_SWHomeTableViewCell)
@@ -26,28 +31,27 @@ class SWHomeViewController:BaseViewController  {
         tableView.estimatedRowHeight = 75.0
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         tableView.backgroundColor = UIColor.clear
+        
+        
         tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
-            self.loadHttp(type: RefreshType.refreshTypeTop)
+            self.loadData(type: RefreshType.refreshTypeTop)
         })
-        tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: {
-            self.loadHttp(type: RefreshType.refreshTypeBottom)
+        tableView.mj_footer = MJRefreshAutoFooter(refreshingBlock: {
+            self.loadData(type: RefreshType.refreshTypeBottom)
         })
-
         
         return tableView
     }()
     
-    var layouts:NSMutableArray = NSMutableArray()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        loadHttp(type: RefreshType.refreshTypeTop)
+        loadData(type: RefreshType.refreshTypeTop)
     }
     
     private func setupUI() {
         self.view.addSubview(tableView)
-        
+
         tableView.snp.makeConstraints { (make) in
             make.top.equalTo(kNavgation_Status_Height)
             make.left.right.equalTo(0)
@@ -57,53 +61,20 @@ class SWHomeViewController:BaseViewController  {
 
     }
     
-    private func loadHttp(type:RefreshType){
+    func loadheader(){
+        self.loadData(type: RefreshType.refreshTypeTop)
+    }
+    func loadData(type:RefreshType){
         
-        var params:SWHomeStatuesParams!
-        
-        switch type {
-        case .refreshTypeTop:
-            params = SWHomeStatusBiz.getParams(refretype: RefreshType.refreshTypeTop, statuses: layouts as? [SWHomeLayoutModel])
-            break
-            
-        case .refreshTypeBottom:
-            params = SWHomeStatusBiz.getParams(refretype: RefreshType.refreshTypeBottom, statuses: layouts as? [SWHomeLayoutModel])
-            break
-            
-        }
-        //2.0 拼接参数
-        SWHomeStatusBiz.getStatusesFromSqlite(params: params) { (array) in
-            if array == nil {//网络请求
-                
-                SWHttpManager.requestWeiboTimeline(apath: "https://api.weibo.com/2/statuses/home_timeline.json", params: params, block: { (json, error) in
-                    self.tableView.mj_header.endRefreshing()
-                    self.tableView.mj_footer.endRefreshing()
-                    if error == nil {
-                        
-                        let statues = SWHomeStatusBiz.getStatuses(json: json)
-                        self.layouts = SWHomeStatusBiz.getStatusLayout(refresh:type, originLayouts: self.layouts as! [SWHomeLayoutModel], beAddStatusModeles: statues as! [SWHomeStatusModel]) as! NSMutableArray
-                        
-                        self.tableView.reloadData()
-                    }
-
-                })
-                
-                
-            }else{//数据库
-                
-                self.tableView.mj_header.endRefreshing()
-                self.tableView.mj_footer.endRefreshing()
-                
-               self.layouts =  SWHomeStatusBiz.getStatusLayout(refresh:type, originLayouts: self.layouts as! [SWHomeLayoutModel], beAddStatusModeles: array!) as! NSMutableArray
-                
-                self.tableView.reloadData()
-
-                
-            }
+        let params:SWHomeStatuesParams! = SWHomeStatusBiz.getParams(refretype: type, statuses: layouts as? [SWHomeLayoutModel])
+        SWHomeStatusBiz.getLayoutModel(refresh: type, params: params, originLayouts: self.layouts as! [SWHomeLayoutModel]) { (layouts) in
+            self.tableView.mj_header.endRefreshing()
+            self.tableView.mj_footer.endRefreshing()
+            self.layouts = layouts
+            self.tableView.reloadData()
         }
 
     }
-
     
 }
 extension SWHomeViewController:UITableViewDataSource,UITableViewDelegate,SWHomeTableViewCellDelegate{

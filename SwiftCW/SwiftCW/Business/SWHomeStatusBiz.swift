@@ -9,6 +9,7 @@
 import UIKit
 
 class SWHomeStatusBiz: NSObject {
+    /**获取请求参数*/
    class func getParams(refretype:RefreshType,statuses:[SWHomeLayoutModel]?) -> SWHomeStatuesParams {
     
         let params = SWHomeStatuesParams()
@@ -16,11 +17,7 @@ class SWHomeStatusBiz: NSObject {
         switch refretype {
         case RefreshType.refreshTypeTop:
             let since_id = statuses?.first?.statusModel.idstr ?? "0"
-            
-            
-           
             params.since_id = since_id;
-
             return  params
             
             
@@ -33,6 +30,7 @@ class SWHomeStatusBiz: NSObject {
         
         
     }
+    /**字典转模型*/
     class func getStatuses(json:Any) -> NSMutableArray {
         let dict : [String:AnyObject] = json as! [String : AnyObject]
         let temps : [[String:AnyObject]] = dict["statuses"] as! [[String:AnyObject]]
@@ -42,6 +40,8 @@ class SWHomeStatusBiz: NSObject {
         let statues:NSMutableArray = SWHomeStatusModel.mj_objectArray(withKeyValuesArray: temps)
         return statues
     }
+    
+    /**刷新成功，model转layout*/
     class func getStatusLayout(refresh:RefreshType,originLayouts:[SWHomeLayoutModel],beAddStatusModeles:[SWHomeStatusModel]) -> [SWHomeLayoutModel]
     {
         var tempLayouts = NSMutableArray()
@@ -63,9 +63,49 @@ class SWHomeStatusBiz: NSObject {
         return temp as! [SWHomeLayoutModel];
 
     }
+    //传入参数，原来的layoutmodel
+    class func getLayoutModel(refresh:RefreshType,params:SWHomeStatuesParams,originLayouts:[SWHomeLayoutModel],completeBlock:@escaping (NSMutableArray) -> Void)
+    {
+        
+        
+        self.getStatusesFromSqlite(params: params) { (array) in//数据库获取
+            
+            if array == nil {//网络请求
+                
+                SWHttpManager.requestWeiboTimeline(apath: "https://api.weibo.com/2/statuses/home_timeline.json", params: params, block: { (json, error) in
+                    if error == nil {
+                        
+                        let statues = SWHomeStatusBiz.getStatuses(json: json)
+                        completeBlock(SWHomeStatusBiz.getStatusLayout(refresh:refresh, originLayouts: originLayouts, beAddStatusModeles: statues as! [SWHomeStatusModel]) as! NSMutableArray)
+                    }
+                    
+                })
+                
+                
+            }else{//数据库
+                
+                completeBlock(SWHomeStatusBiz.getStatusLayout(refresh:refresh, originLayouts: originLayouts, beAddStatusModeles: array!) as! NSMutableArray)
+            }
+            
+            
+            
+        }
+        
+
+}
+    
+//MARK 持久层相关
+    
+    /**
+     *清空数据库
+     */
     class func cleanStatusFromSqlite(){
         DAOManager.cleanStatuses()
     }
+    
+    /**
+     *从sqlite中获取展现层model
+     */
     class func getStatusesFromSqlite(params:SWHomeStatuesParams, finished: @escaping ([SWHomeStatusModel]?)->()){
         var since_id:Int?
         var max_id:Int?
@@ -78,9 +118,6 @@ class SWHomeStatusBiz: NSObject {
             max_id = Int(params.max_id!)
         }
         
-        
-//        let since_id:Int? = Int(dict["since_id"] as! String)
-//        let max_id:Int? =   Int(dict["max_id"] as! String)
         DAOManager.loadCacheStatuses(since_id: since_id ?? 0, max_id: max_id ?? 0) { (array) in
             
             if !(array?.isEmpty)!{

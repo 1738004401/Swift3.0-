@@ -70,6 +70,8 @@ extension SWLoginController:UIWebViewDelegate{
             print(json ?? "nu")
             UserDefaults.standard.set(json, forKey: SWUserJson)
             UserDefaults.standard.synchronize()
+            let rootController = RootTabBarController()
+            UIApplication.shared.keyWindow?.rootViewController = rootController
         }) { (_, error) in
             print(error )
         }

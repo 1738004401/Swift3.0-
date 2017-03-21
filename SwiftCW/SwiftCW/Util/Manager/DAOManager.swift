@@ -128,8 +128,6 @@ class DAOManager: NSObject {
                     statuses.append(dict)
                 }
                 
-                // 3.返回数据
-                finished(statuses)
                 
             }
             
