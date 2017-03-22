@@ -20,7 +20,7 @@ import ODRefreshControl
 
 class SWHomeViewController:BaseViewController  {
 
-    var layouts:NSMutableArray = NSMutableArray()
+    var layouts:[SWHomeLayoutModel] = []
     
     
     private lazy var tableView:UITableView = {
@@ -58,16 +58,15 @@ class SWHomeViewController:BaseViewController  {
             make.bottom.equalTo(-kTabbar_Height)
             
         }
-
+        
+        
+       
     }
     
-    func loadheader(){
-        self.loadData(type: RefreshType.refreshTypeTop)
-    }
-    func loadData(type:RefreshType){
+     func loadData(type:RefreshType){
         
-        let params:SWHomeStatuesParams! = SWHomeStatusBiz.getParams(refretype: type, statuses: layouts as? [SWHomeLayoutModel])
-        SWHomeStatusBiz.getLayoutModel(refresh: type, params: params, originLayouts: self.layouts as! [SWHomeLayoutModel]) { (layouts) in
+        let params:SWHomeStatuesParams! = SWHomeStatusBiz.getParams(refretype: type, statuses: layouts)
+        SWHomeStatusBiz.getLayoutModel(refresh: type, params: params, originLayouts: self.layouts) { (layouts) in
             self.tableView.mj_header.endRefreshing()
             self.tableView.mj_footer.endRefreshing()
             self.layouts = layouts
@@ -84,7 +83,7 @@ extension SWHomeViewController:UITableViewDataSource,UITableViewDelegate,SWHomeT
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:SWHomeTableViewCell = tableView.dequeueReusableCell(withIdentifier: kCellIdentifier_SWHomeTableViewCell, for: indexPath) as! SWHomeTableViewCell
-        cell.statusLayout = layouts[indexPath.row] as? SWHomeLayoutModel
+        cell.statusLayout = layouts[indexPath.row]
         cell.delegate = self
         return cell
     }
@@ -101,9 +100,16 @@ extension SWHomeViewController:UITableViewDataSource,UITableViewDelegate,SWHomeT
         }
         
         if ((info?[kWBLinkTopicName]) != nil) {
-            let name:NSString! = info?[kWBLinkTopicName] as! NSString
-            if (name.length > 0) {//NSString stringWithFormat:@"http://m.weibo.cn/n/%@",name;
-                let url:String?  = "http://m.weibo.cn/n/".appending((name as? String)!)
+            var name:NSString! = info?[kWBLinkTopicName] as! NSString
+            name = name.byURLEncode() as NSString!
+            if (name.length > 0) {
+                let url:String?  = "http://m.weibo.cn/k/".appending((name as? String)!)
+                let webController =  BaseWebViewController()
+                webController.urlString = url
+                webController.hidesBottomBarWhenPushed = true
+                navigationController?.pushViewController(webController, animated: true)
+
+                
             }
             return;
         }

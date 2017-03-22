@@ -53,6 +53,10 @@
 		0F5B67031E7E3A3B007CF155 /* SWHomeStatusBiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5B67021E7E3A3B007CF155 /* SWHomeStatusBiz.swift */; };
 		0F5B67051E7E3C76007CF155 /* DAOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5B67041E7E3C76007CF155 /* DAOManager.swift */; };
 		0F5B67071E7E3E57007CF155 /* SWCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5B67061E7E3E57007CF155 /* SWCategory.swift */; };
+		0F5F0A941E8201E900B29AE1 /* BiBaoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5F0A931E8201E900B29AE1 /* BiBaoController.swift */; };
+		0F5F0A961E82045A00B29AE1 /* ArrayDictStringController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5F0A951E82045A00B29AE1 /* ArrayDictStringController.swift */; };
+		0F637BAC1E812AFC00A4B402 /* UIKitStudyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F637BAB1E812AFC00A4B402 /* UIKitStudyController.swift */; };
+		0F637BAE1E812CBC00A4B402 /* UIButtonStudyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F637BAD1E812CBC00A4B402 /* UIButtonStudyController.swift */; };
 		0F84590E1E790665007F6C8E /* WBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8459031E790665007F6C8E /* WBModel.m */; };
 		0F84590F1E790665007F6C8E /* WBStatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8459051E790665007F6C8E /* WBStatusCell.m */; };
 		0F8459101E790665007F6C8E /* WBStatusHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8459071E790665007F6C8E /* WBStatusHelper.m */; };
@@ -118,6 +122,10 @@
 		0F5B67021E7E3A3B007CF155 /* SWHomeStatusBiz.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWHomeStatusBiz.swift; sourceTree = "<group>"; };
 		0F5B67041E7E3C76007CF155 /* DAOManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOManager.swift; sourceTree = "<group>"; };
 		0F5B67061E7E3E57007CF155 /* SWCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWCategory.swift; sourceTree = "<group>"; };
+		0F5F0A931E8201E900B29AE1 /* BiBaoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BiBaoController.swift; sourceTree = "<group>"; };
+		0F5F0A951E82045A00B29AE1 /* ArrayDictStringController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayDictStringController.swift; sourceTree = "<group>"; };
+		0F637BAB1E812AFC00A4B402 /* UIKitStudyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitStudyController.swift; sourceTree = "<group>"; };
+		0F637BAD1E812CBC00A4B402 /* UIButtonStudyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonStudyController.swift; sourceTree = "<group>"; };
 		0F8459021E790665007F6C8E /* WBModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBModel.h; sourceTree = "<group>"; };
 		0F8459031E790665007F6C8E /* WBModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBModel.m; sourceTree = "<group>"; };
 		0F8459041E790665007F6C8E /* WBStatusCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBStatusCell.h; sourceTree = "<group>"; };
@@ -220,6 +228,7 @@
 		0F3A6A291E7820770012F047 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0F637BAA1E812AD100A4B402 /* Study */,
 				0F3A6A2A1E7820770012F047 /* Compos */,
 				0F3A6A2C1E7820770012F047 /* Home */,
 				0F3A6A2E1E7820770012F047 /* Login */,
@@ -372,6 +381,17 @@
 				0F5B67021E7E3A3B007CF155 /* SWHomeStatusBiz.swift */,
 			);
 			path = Business;
+			sourceTree = "<group>";
+		};
+		0F637BAA1E812AD100A4B402 /* Study */ = {
+			isa = PBXGroup;
+			children = (
+				0F637BAB1E812AFC00A4B402 /* UIKitStudyController.swift */,
+				0F5F0A931E8201E900B29AE1 /* BiBaoController.swift */,
+				0F637BAD1E812CBC00A4B402 /* UIButtonStudyController.swift */,
+				0F5F0A951E82045A00B29AE1 /* ArrayDictStringController.swift */,
+			);
+			path = Study;
 			sourceTree = "<group>";
 		};
 		0F8459011E790665007F6C8E /* OC */ = {
@@ -574,8 +594,10 @@
 				0F330B251E7A77AE0042AA8C /* SWHomeStatusProfileView.swift in Sources */,
 				0F8459111E790665007F6C8E /* WBStatusLayout.m in Sources */,
 				0F22336F1E78C88000328EBA /* SWHomeLayoutModel.swift in Sources */,
+				0F637BAE1E812CBC00A4B402 /* UIButtonStudyController.swift in Sources */,
 				0F330B271E7A83C40042AA8C /* SWStautsUser.swift in Sources */,
 				0F8459131E790665007F6C8E /* YYTableViewCell.m in Sources */,
+				0F5F0A941E8201E900B29AE1 /* BiBaoController.swift in Sources */,
 				0F8459121E790665007F6C8E /* YYControl.m in Sources */,
 				0F5B67031E7E3A3B007CF155 /* SWHomeStatusBiz.swift in Sources */,
 				0F5B67051E7E3C76007CF155 /* DAOManager.swift in Sources */,
@@ -584,7 +606,9 @@
 				0F3A6A3C1E7820770012F047 /* SWHomeViewController.swift in Sources */,
 				0FB179C31E7D959B008D58C2 /* SWHttpManager.swift in Sources */,
 				0F5832621E7A39190092D75B /* SWHomeViewControllers.swift in Sources */,
+				0F637BAC1E812AFC00A4B402 /* UIKitStudyController.swift in Sources */,
 				0F8459171E790AAC007F6C8E /* SWHomeStatusModel.swift in Sources */,
+				0F5F0A961E82045A00B29AE1 /* ArrayDictStringController.swift in Sources */,
 				0F3A6A401E7820770012F047 /* GlobalConst.swift in Sources */,
 				0F84590E1E790665007F6C8E /* WBModel.m in Sources */,
 				0F3A6A3B1E7820770012F047 /* SWComposeViewController.swift in Sources */,

@@ -203,8 +203,8 @@ class SWHomeLayoutModel: NSObject {
                 
                 // 数据信息，用于稍后用户点击
                 let originStr:String = text.string
-                let start = originStr.index(originStr.startIndex, offsetBy: at.range.location )
-                let end = originStr.index(start, offsetBy: at.range.length )
+                let start = originStr.index(originStr.startIndex, offsetBy: at.range.location+1 )
+                let end = originStr.index(start, offsetBy: at.range.length-2 )
                 let range:Range = Range(uncheckedBounds: (start,end))
                 let infoStr = originStr.substring(with: range)
                 

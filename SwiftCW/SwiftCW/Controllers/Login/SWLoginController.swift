@@ -53,28 +53,19 @@ extension SWLoginController:UIWebViewDelegate{
     }
     fileprivate func loadUser(code:String){
         
-        
-        let url = URL(string: "https://api.weibo.com/")
-        let manager = AFHTTPSessionManager.init(baseURL: url)
-        
-        let path = "oauth2/access_token";
         let params = ["client_id":WB_App_Key, "client_secret":WB_App_Secret, "grant_type":"authorization_code", "code":code, "redirect_uri":WB_redirect_uri];
         
-        manager.responseSerializer.acceptableContentTypes = NSSet(objects: "application/json", "text/json", "text/javascript", "text/plain") as? Set<String>
+        BaseHTTPMethodTool.shareInstance.responseSerializer.acceptableContentTypes = NSSet(objects: "application/json", "text/json", "text/javascript", "text/plain") as? Set<String>
         
-        
-        
-        manager.post(path, parameters: params, progress: { (_) in
-            
-        }, success: { (task:URLSessionDataTask, json) in
-            print(json ?? "nu")
-            UserDefaults.standard.set(json, forKey: SWUserJson)
-            UserDefaults.standard.synchronize()
-            let rootController = RootTabBarController()
-            UIApplication.shared.keyWindow?.rootViewController = rootController
-        }) { (_, error) in
-            print(error )
+        BaseHTTPMethodTool.shareInstance.requestJsonDataWithPath(aPath: "https://api.weibo.com/oauth2/access_token", Params: params as NSDictionary, MethodType: NetworkMethod.Post) { (json, error) in
+            if error == nil{
+                UserDefaults.standard.set(json, forKey: SWUserJson)
+                UserDefaults.standard.synchronize()
+                let rootController = RootTabBarController()
+                UIApplication.shared.keyWindow?.rootViewController = rootController
+            }
         }
+        
         
         
     }

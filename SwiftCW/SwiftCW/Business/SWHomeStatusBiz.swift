@@ -31,40 +31,46 @@ class SWHomeStatusBiz: NSObject {
         
     }
     /**字典转模型*/
-    class func getStatuses(json:Any) -> NSMutableArray {
+    class func getStatuses(json:Any) -> [SWHomeStatusModel] {
         let dict : [String:AnyObject] = json as! [String : AnyObject]
         let temps : [[String:AnyObject]] = dict["statuses"] as! [[String:AnyObject]]
         //缓存到数据库
         DAOManager.cacheStatuses(statuses: temps)
         
-        let statues:NSMutableArray = SWHomeStatusModel.mj_objectArray(withKeyValuesArray: temps)
+        let statues:[SWHomeStatusModel] = SWHomeStatusModel.mj_objectArray(withKeyValuesArray: temps).copy() as! [SWHomeStatusModel]
         return statues
     }
     
     /**刷新成功，model转layout*/
     class func getStatusLayout(refresh:RefreshType,originLayouts:[SWHomeLayoutModel],beAddStatusModeles:[SWHomeStatusModel]) -> [SWHomeLayoutModel]
     {
-        var tempLayouts = NSMutableArray()
+        var tempLayouts:[SWHomeLayoutModel] = []
         for statue in beAddStatusModeles{
-            let layout = SWHomeLayoutModel.init(status: statue as! SWHomeStatusModel)
-            tempLayouts.add(layout)
-        }
-        
-        
-        var temp:NSMutableArray = NSMutableArray.init(array: originLayouts)
-        if refresh == RefreshType.refreshTypeTop{
-            let insertRange:Range = Range.init(uncheckedBounds: (0,tempLayouts.count))
-            let insertIndexSet:IndexSet = IndexSet.init(integersIn: insertRange)
+            let layout = SWHomeLayoutModel.init(status: statue )
+            tempLayouts.append(layout)
             
-            temp.insert(tempLayouts as![Any], at: insertIndexSet)
-        }else{
-            temp.addObjects(from: tempLayouts as![Any])
         }
-        return temp as! [SWHomeLayoutModel];
+        
+        
+//        var temp:NSMutableArray = NSMutableArray.init(array: originLayouts)
+        var temp:[SWHomeLayoutModel] = [SWHomeLayoutModel]()
+        temp += originLayouts
+        if refresh == RefreshType.refreshTypeTop{
+//            let insertRange:Range = Range.init(uncheckedBounds: (0,tempLayouts.count))
+//            let insertIndexSet:IndexSet = IndexSet.init(integersIn: insertRange)
+//            
+//            
+//            temp.insert(tempLayouts as![Any], at: insertIndexSet)
+            temp.insert(contentsOf: tempLayouts, at: 0)
+        }else{
+//            temp.addObjects(from: tempLayouts as![Any])
+            temp.append(contentsOf: tempLayouts)
+        }
+        return temp ;
 
     }
     //传入参数，原来的layoutmodel
-    class func getLayoutModel(refresh:RefreshType,params:SWHomeStatuesParams,originLayouts:[SWHomeLayoutModel],completeBlock:@escaping (NSMutableArray) -> Void)
+    class func getLayoutModel(refresh:RefreshType,params:SWHomeStatuesParams,originLayouts:[SWHomeLayoutModel],completeBlock:@escaping ([SWHomeLayoutModel]) -> Void)
     {
         
         
@@ -75,8 +81,8 @@ class SWHomeStatusBiz: NSObject {
                 SWHttpManager.requestWeiboTimeline(apath: "https://api.weibo.com/2/statuses/home_timeline.json", params: params, block: { (json, error) in
                     if error == nil {
                         
-                        let statues = SWHomeStatusBiz.getStatuses(json: json)
-                        completeBlock(SWHomeStatusBiz.getStatusLayout(refresh:refresh, originLayouts: originLayouts, beAddStatusModeles: statues as! [SWHomeStatusModel]) as! NSMutableArray)
+                        let statues = SWHomeStatusBiz.getStatuses(json: json!)
+                        completeBlock(SWHomeStatusBiz.getStatusLayout(refresh:refresh, originLayouts: originLayouts, beAddStatusModeles: statues ))
                     }
                     
                 })
@@ -84,7 +90,7 @@ class SWHomeStatusBiz: NSObject {
                 
             }else{//数据库
                 
-                completeBlock(SWHomeStatusBiz.getStatusLayout(refresh:refresh, originLayouts: originLayouts, beAddStatusModeles: array!) as! NSMutableArray)
+                completeBlock(SWHomeStatusBiz.getStatusLayout(refresh:refresh, originLayouts: originLayouts, beAddStatusModeles: array!) )
             }
             
             

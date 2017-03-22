@@ -32,5 +32,19 @@ extension String{
         let path = NSTemporaryDirectory() as NSString
         return path.appendingPathComponent((self as NSString).lastPathComponent)
     }
+    
+    func subrange(start:Int,end:Int) -> String{
+        let start = self.index(self.startIndex, offsetBy: start)
+        let end = self.index(self.startIndex, offsetBy: end)
+        let str = self.substring(with: Range(uncheckedBounds: (start,end)))
+        return str
+    }
 
+}
+extension Array{
+    
+    mutating func replaceObject(Index:Int,newObject:Element){
+        let arrRange = Range.init(uncheckedBounds: (Index,Index + 1 ))
+        self.replaceSubrange(arrRange, with: [newObject])
+    }
 }

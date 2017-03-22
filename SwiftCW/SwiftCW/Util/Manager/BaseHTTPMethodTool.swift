@@ -48,9 +48,9 @@ final class BaseHTTPMethodTool: AFHTTPSessionManager {
             post(aPath, parameters: Params, progress: { (_) in
                 
             }, success: { (_, json) in
-                
+                block(json!,nil)
             }, failure: { (_, error) in
-                
+                print(error)
             })
             
             break
