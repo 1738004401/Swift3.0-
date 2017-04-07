@@ -195,6 +195,9 @@ class SWHomeStatusBiz: NSObject {
                 SWHttpManager.requestWeiboTimeline(apath: "https://api.weibo.com/2/statuses/home_timeline.json", params: params, block: { (json, error) in
                     if error == nil {
                         
+                        let dict = json as! NSDictionary
+                        print(dict)
+                        
                         let statues = SWHomeStatusBiz.getStatuses(json: json!)
                         completeBlock(SWHomeStatusBiz.getStatusFrameModel(refresh: refresh, originFrameModel: originLayouts, beAddStatusModeles: statues))
                     }

@@ -75,7 +75,41 @@ class HomeFrameCell: UITableViewCell {
                 print(URL.init(string: pic?.object(forKey: "thumbnail_pic") as! String))
                 
                 imageView.layer.setImageWith(URL.init(string: pic?.object(forKey: "thumbnail_pic") as! String), placeholder: nil)
-                
+//                imageView.layer.setImageWith(URL.init(string: pic?.object(forKey: "thumbnail_pic") as! String), placeholder: nil, options: YYWebImageOptions.avoidSetImage, completion: { (image, url, from, stage, error) in
+//                    
+//                    
+//                    
+//                    
+//                    
+//                })
+//                [imageView.layer setImageWithURL:pic.bmiddle.url
+//                    placeholder:nil
+//                    options:YYWebImageOptionAvoidSetImage
+//                    completion:^(UIImage *image, NSURL *url, YYWebImageFromType from, YYWebImageStage stage, NSError *error) {
+//                    @strongify(imageView);
+//                    if (!imageView) return;
+//                    if (image && stage == YYWebImageStageFinished) {
+//                    int width = pic.bmiddle.width;
+//                    int height = pic.bmiddle.height;
+//                    CGFloat scale = (height / width) / (imageView.height / imageView.width);
+//                    if (scale < 0.99 || isnan(scale)) { // 宽图把左右两边裁掉
+//                    imageView.contentMode = UIViewContentModeScaleAspectFill;
+//                    imageView.layer.contentsRect = CGRectMake(0, 0, 1, 1);
+//                    } else { // 高图只保留顶部
+//                    imageView.contentMode = UIViewContentModeScaleToFill;
+//                    imageView.layer.contentsRect = CGRectMake(0, 0, 1, (float)width / height);
+//                    }
+//                    ((YYControl *)imageView).image = image;
+//                    if (from != YYWebImageFromMemoryCacheFast) {
+//                    CATransition *transition = [CATransition animation];
+//                    transition.duration = 0.15;
+//                    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+//                    transition.type = kCATransitionFade;
+//                    [imageView.layer addAnimation:transition forKey:@"contents"];
+//                    }
+//                    }
+//                    }];
+
                 
                 
                

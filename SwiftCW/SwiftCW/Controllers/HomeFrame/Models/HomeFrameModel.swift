@@ -209,30 +209,68 @@ class HomeFrameModel: NSObject {
         
         
         // 匹配 url
+        var urlClipLength = 0;
+        
+        
         let UrlResults:[NSTextCheckingResult]! = WBStatusHelper.regexUrl().matches(in: text.string, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: text.rangeOfAll())
         for at in UrlResults{
+            
+            
+            
+            
             if at.range.location == NSNotFound && at.range.length <= 1 {
                 continue
             }
+            var range:NSRange! = at.range;
+            range.location -= urlClipLength;
             if (text.attribute(YYTextHighlightAttributeName, at: UInt(at.range.location)) == nil) {
-                text.setColor(kWBCellTextHighlightColor, range: at.range)
+//                text.setColor(kWBCellTextHighlightColor, range: at.range)
                 
-                // 高亮状态
+                
+                //1.0 将以前的http替换成“网页链接”
+                
+                let originStr:String = text.string
+                let start = originStr.index(originStr.startIndex, offsetBy: range.location )
+                let end = originStr.index(start, offsetBy: range.length)
+                let emorange:Range = Range(uncheckedBounds: (start,end))
+                let infoStr = originStr.substring(with: emorange)
+                
+                
+                
+                let emoText:NSAttributedString! = NSAttributedString.init(string: "网页链接", attributes: [NSFontAttributeName:font])
+//                NSAttributedString.init(string: "网页链接", attributes: [NSFontAttributeName:font])
+                text.replaceCharacters(in: range, with: emoText)
+                urlClipLength = urlClipLength + range.length - 4;
+
+                
+                //2.0 设置高亮
+                
                 let highlight:YYTextHighlight! = YYTextHighlight()
                 highlight.setBackgroundBorder(highlightBorder)
                 
-                let originStr:String = text.string
-                let start = originStr.index(originStr.startIndex, offsetBy: at.range.location)
-                let end = originStr.index(start, offsetBy: at.range.length)
-                let range:Range = Range(uncheckedBounds: (start,end))
                 
+                let urlRange = NSRange.init(location: range.location, length: 4)
                 
-                let infoStr = originStr.substring(with: range)
-                
-                
+                text.setColor(kWBCellTextHighlightColor, range: urlRange)
                 highlight.userInfo = [kWBLinkURLName : infoStr]
-                
-                text.setTextHighlight(highlight, range: at.range)
+                text.setTextHighlight(highlight, range: urlRange)
+                /*
+                 let highlight:YYTextHighlight! = YYTextHighlight()
+                 highlight.setBackgroundBorder(highlightBorder)
+                 
+                 let originStr:String = text.string
+                 let start = originStr.index(originStr.startIndex, offsetBy: at.range.location)
+                 let end = originStr.index(start, offsetBy: at.range.length)
+                 let range:Range = Range(uncheckedBounds: (start,end))
+                 
+                 
+                 let infoStr = originStr.substring(with: range)
+                 
+                 
+                 highlight.userInfo = [kWBLinkURLName : infoStr]
+                 
+                 text.setTextHighlight(highlight, range: at.range)
+                 **/
             }
             
             
