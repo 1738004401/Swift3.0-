@@ -1,34 +1,27 @@
 //
-//  SWHomeViewController.swift
-//  Swift实战
+//  HomeFrameVC.swift
+//  SwiftCW
 //
-//  Created by YiXue on 17/3/14.
+//  Created by YiXue on 17/3/24.
 //  Copyright © 2017年 赵刘磊. All rights reserved.
 //
 
 import UIKit
-import SnapKit
 import AFNetworking
 import MJExtension
 import YYKit
 import MJRefresh
-import SVPullToRefresh
-import ODRefreshControl
 
+class HomeFrameVC: BaseViewController {
 
-
-
-class SWHomeViewController:BaseViewController  {
-
-    var layouts:[SWHomeLayoutModel] = []
+    var layouts:[HomeFrameModel] = []
     
     
     private lazy var tableView:UITableView = {
         let tableView = UITableView()
-        tableView.register(SWHomeTableViewCell.self, forCellReuseIdentifier: kCellIdentifier_SWHomeTableViewCell)
+        tableView.register(HomeFrameCell.self, forCellReuseIdentifier: kCellIdentifier_HomeFrameCell)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.estimatedRowHeight = 75.0
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         tableView.backgroundColor = UIColor.clear
         
@@ -51,7 +44,7 @@ class SWHomeViewController:BaseViewController  {
     
     private func setupUI() {
         self.view.addSubview(tableView)
-
+        
         tableView.snp.makeConstraints { (make) in
             make.top.equalTo(kNavgation_Status_Height)
             make.left.right.equalTo(0)
@@ -60,37 +53,42 @@ class SWHomeViewController:BaseViewController  {
         }
         
         
-       
+        
     }
     
-     func loadData(type:RefreshType){
+    func loadData(type:RefreshType){
         
-        let params:SWHomeStatuesParams! = SWHomeStatusBiz.getParams(refretype: type, statuses: layouts)
+        let params:SWHomeStatuesParams! = SWHomeStatusBiz.getParams(refretype: type, statusesFrameModels: self.layouts)
         
-        SWHomeStatusBiz.getLayoutModel(params: params, originLayouts: self.layouts) { (layouts) in
+        SWHomeStatusBiz.getFrameModel(params: params, originLayouts: self.layouts) { (frameModels) in
             self.tableView.mj_header.endRefreshing()
             self.tableView.mj_footer.endRefreshing()
-            self.layouts = layouts
+            self.layouts = frameModels
             self.tableView.reloadData()
         }
-
+        
     }
     
+
 }
-extension SWHomeViewController:UITableViewDataSource,UITableViewDelegate,SWHomeTableViewCellDelegate{
+extension HomeFrameVC:UITableViewDataSource,UITableViewDelegate,HomeFrameCellDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.layouts.count;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:SWHomeTableViewCell = tableView.dequeueReusableCell(withIdentifier: kCellIdentifier_SWHomeTableViewCell, for: indexPath) as! SWHomeTableViewCell
-        cell.statusLayout = layouts[indexPath.row]
+        let cell:HomeFrameCell = tableView.dequeueReusableCell(withIdentifier: kCellIdentifier_HomeFrameCell, for: indexPath) as! HomeFrameCell
+        cell.homeFrameLayout = layouts[indexPath.row]
         cell.delegate = self
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let model = self.layouts[indexPath.row]
+        return model.height
     }
     func cellLinkClicked(containerView: UIView, text: NSAttributedString, range: NSRange, rect: CGRect) {
         let highlight:YYTextHighlight? = text.attribute(YYTextHighlightAttributeName, at: UInt(range.location)) as? YYTextHighlight
@@ -109,7 +107,7 @@ extension SWHomeViewController:UITableViewDataSource,UITableViewDelegate,SWHomeT
                 webController.urlString = url
                 webController.hidesBottomBarWhenPushed = true
                 navigationController?.pushViewController(webController, animated: true)
-
+                
                 
             }
             return;
@@ -123,7 +121,8 @@ extension SWHomeViewController:UITableViewDataSource,UITableViewDelegate,SWHomeT
             
             return;
         }
-
+        
     }
     
 }
+

@@ -52,7 +52,7 @@ class SWHomeStatusModel: NSObject {
     var mlevelSource : String?
     var original_pic : String?
     var page_type : Int64?
-    var pic_urls : [String:String]?
+    var pic_urls : NSArray?
     var positive_recom_flag : Int64?
     var reposts_count : Int64?
     var rid : String?

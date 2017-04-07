@@ -57,9 +57,32 @@ let kWBCellTimeNormalColor:UIColor = UIColor.init(hexString:"828282")!
 let kWBCellTimeOrangeColor:UIColor = UIColor.init(hexString:"f28824")!
 
 
-let kWBCellPadding:CGFloat = 10.0
-let kWBCellNameWidth:CGFloat = (kScreen_Width - 110.0)
 
+let kWBLinkTopicName:String = "topic" //WBTopic
+let kWBLinkURLName:String = "url" //WBURL
+let kWBLinkAtName:String = "at" //NSString
+
+
+
+let kWBCellTopMargin:CGFloat = 8.0
+let kWBCellTitleHeight:CGFloat = 36.0
+let kWBCellPadding:CGFloat = 12.0
+let kWBCellPaddingText:CGFloat = 10.0
+let kWBCellPaddingPic:CGFloat = 4.0
+let kWBCellProfileHeight:CGFloat = 56.0
+let kWBCellCardHeight:CGFloat = 70.0
+let kWBCellNamePaddingLeft:CGFloat = 14.0
+let kWBCellContentWidth:CGFloat = (kScreen_Width - 2 * kWBCellPadding)
+let kWBCellNameWidth:CGFloat = (kScreen_Width - 110.0)
+let kWBCellTagPadding:CGFloat = 8.0
+let kWBCellTagNormalHeight:CGFloat = 16.0
+let kWBCellTagPlaceHeight:CGFloat = 24.0
+let kWBCellToolbarHeight:CGFloat = 35.0
+let kWBCellToolbarBottomMargin:CGFloat = 2.0
+let kWBCellNameFontSize:CGFloat = 15.0
+let kWBCellSourceFontSize:CGFloat = 11.0
+let kWBCellTextFontSize:CGFloat = 16.0
+let kWBCellTextFontRetweetSize:CGFloat = 16.0
 
 
 

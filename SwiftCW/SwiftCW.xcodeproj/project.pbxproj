@@ -13,6 +13,10 @@
 		0F330B211E7A5A180042AA8C /* EmoticonWeibo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0F330B201E7A5A180042AA8C /* EmoticonWeibo.bundle */; };
 		0F330B251E7A77AE0042AA8C /* SWHomeStatusProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F330B241E7A77AE0042AA8C /* SWHomeStatusProfileView.swift */; };
 		0F330B271E7A83C40042AA8C /* SWStautsUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F330B261E7A83C40042AA8C /* SWStautsUser.swift */; };
+		0F38A5341E8556CE004B57D9 /* HomeFrameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F38A5331E8556CE004B57D9 /* HomeFrameVC.swift */; };
+		0F38A5361E8556E7004B57D9 /* HomeFrameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F38A5351E8556E7004B57D9 /* HomeFrameModel.swift */; };
+		0F38A5381E855705004B57D9 /* HomeFrameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F38A5371E855705004B57D9 /* HomeFrameCell.swift */; };
+		0F38A53A1E856F08004B57D9 /* HomeProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F38A5391E856F08004B57D9 /* HomeProfileView.swift */; };
 		0F3A6A171E7820270012F047 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3A6A161E7820270012F047 /* AppDelegate.swift */; };
 		0F3A6A1E1E7820270012F047 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F3A6A1D1E7820270012F047 /* Assets.xcassets */; };
 		0F3A6A211E7820270012F047 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F3A6A1F1E7820270012F047 /* LaunchScreen.storyboard */; };
@@ -79,6 +83,10 @@
 		0F330B201E7A5A180042AA8C /* EmoticonWeibo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = EmoticonWeibo.bundle; sourceTree = "<group>"; };
 		0F330B241E7A77AE0042AA8C /* SWHomeStatusProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWHomeStatusProfileView.swift; sourceTree = "<group>"; };
 		0F330B261E7A83C40042AA8C /* SWStautsUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWStautsUser.swift; sourceTree = "<group>"; };
+		0F38A5331E8556CE004B57D9 /* HomeFrameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeFrameVC.swift; sourceTree = "<group>"; };
+		0F38A5351E8556E7004B57D9 /* HomeFrameModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeFrameModel.swift; sourceTree = "<group>"; };
+		0F38A5371E855705004B57D9 /* HomeFrameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeFrameCell.swift; sourceTree = "<group>"; };
+		0F38A5391E856F08004B57D9 /* HomeProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeProfileView.swift; sourceTree = "<group>"; };
 		0F3A6A131E7820270012F047 /* SwiftCW.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftCW.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F3A6A161E7820270012F047 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0F3A6A1D1E7820270012F047 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
@@ -178,6 +186,41 @@
 			path = Account;
 			sourceTree = "<group>";
 		};
+		0F38A52F1E855693004B57D9 /* HomeFrame */ = {
+			isa = PBXGroup;
+			children = (
+				0F38A5301E8556B9004B57D9 /* Controller */,
+				0F38A5311E8556B9004B57D9 /* Models */,
+				0F38A5321E8556B9004B57D9 /* Views */,
+			);
+			path = HomeFrame;
+			sourceTree = "<group>";
+		};
+		0F38A5301E8556B9004B57D9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0F38A5331E8556CE004B57D9 /* HomeFrameVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0F38A5311E8556B9004B57D9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0F38A5351E8556E7004B57D9 /* HomeFrameModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0F38A5321E8556B9004B57D9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0F38A5371E855705004B57D9 /* HomeFrameCell.swift */,
+				0F38A5391E856F08004B57D9 /* HomeProfileView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		0F3A6A0A1E7820270012F047 = {
 			isa = PBXGroup;
 			children = (
@@ -228,6 +271,7 @@
 		0F3A6A291E7820770012F047 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0F38A52F1E855693004B57D9 /* HomeFrame */,
 				0F637BAA1E812AD100A4B402 /* Study */,
 				0F3A6A2A1E7820770012F047 /* Compos */,
 				0F3A6A2C1E7820770012F047 /* Home */,
@@ -465,7 +509,7 @@
 				TargetAttributes = {
 					0F3A6A121E7820270012F047 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = FT4TT5Y9WT;
+						DevelopmentTeam = 7E75TAG5FC;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
@@ -594,7 +638,9 @@
 				0F330B251E7A77AE0042AA8C /* SWHomeStatusProfileView.swift in Sources */,
 				0F8459111E790665007F6C8E /* WBStatusLayout.m in Sources */,
 				0F22336F1E78C88000328EBA /* SWHomeLayoutModel.swift in Sources */,
+				0F38A5381E855705004B57D9 /* HomeFrameCell.swift in Sources */,
 				0F637BAE1E812CBC00A4B402 /* UIButtonStudyController.swift in Sources */,
+				0F38A5361E8556E7004B57D9 /* HomeFrameModel.swift in Sources */,
 				0F330B271E7A83C40042AA8C /* SWStautsUser.swift in Sources */,
 				0F8459131E790665007F6C8E /* YYTableViewCell.m in Sources */,
 				0F5F0A941E8201E900B29AE1 /* BiBaoController.swift in Sources */,
@@ -611,8 +657,10 @@
 				0F5F0A961E82045A00B29AE1 /* ArrayDictStringController.swift in Sources */,
 				0F3A6A401E7820770012F047 /* GlobalConst.swift in Sources */,
 				0F84590E1E790665007F6C8E /* WBModel.m in Sources */,
+				0F38A53A1E856F08004B57D9 /* HomeProfileView.swift in Sources */,
 				0F3A6A3B1E7820770012F047 /* SWComposeViewController.swift in Sources */,
 				0F5B67071E7E3E57007CF155 /* SWCategory.swift in Sources */,
+				0F38A5341E8556CE004B57D9 /* HomeFrameVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -728,7 +776,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = FT4TT5Y9WT;
+				DEVELOPMENT_TEAM = 7E75TAG5FC;
 				INFOPLIST_FILE = SwiftCW/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -746,7 +794,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = FT4TT5Y9WT;
+				DEVELOPMENT_TEAM = 7E75TAG5FC;
 				INFOPLIST_FILE = SwiftCW/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

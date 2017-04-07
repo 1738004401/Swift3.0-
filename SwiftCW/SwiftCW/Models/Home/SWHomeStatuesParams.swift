@@ -12,4 +12,5 @@ class SWHomeStatuesParams: NSObject {
     var access_token : String!
     var since_id     : String?
     var max_id       :String?
+    var refreshType  :RefreshType!
 }

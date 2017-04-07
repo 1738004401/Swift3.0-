@@ -8,7 +8,7 @@
 //MARK: `Swift` 提供了 `String` 和 `NSString` 之间的无缝转换
 import UIKit
 
-class ArrayDictStringController: UIViewController {
+class ArrayDictStringController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -126,3 +126,18 @@ class ArrayDictStringController: UIViewController {
     }
 
 }
+/*
+ let dateStr:String = "Mon Mar 20 13:41:46 +0800 2017"
+ 
+ 
+ let formatter = DateFormatter()
+ 
+ // 2.设置时间的格式
+ formatter.dateFormat = "EEE MMM d HH:mm:ss Z yyyy"
+ 
+ // 3. 设置时间的区域(真机必须设置，否则可能不会转换成功)
+ formatter.locale = NSLocale(localeIdentifier: "en_US") as Locale!
+ 
+ // 4.转换(转换好的时间是去除时区的时间)
+ let createdDate = formatter.date(from: dateStr)!
+ **/

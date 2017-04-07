@@ -11,5 +11,6 @@
 
 #import "WBStatusCell.h"
 #import "WBStatusLayout.h"
+#import "YYControl.h"
 
 #endif /* Bridging_Header_h */

@@ -10,6 +10,7 @@ import UIKit
 import SnapKit
 import YYKit
 
+
 let kCellIdentifier_SWHomeTableViewCell = "SWHomeTableViewCell"
 
 @objc
@@ -22,17 +23,20 @@ class SWHomeTableViewCell: UITableViewCell {
     open var delegate:SWHomeTableViewCellDelegate?
     var labelHeight : Constraint?
     var profileView : SWHomeStatusProfileView!
+    var _picViews:NSMutableArray!
     
     var statusLayout : SWHomeLayoutModel?
     {
         didSet{
-            let container = YYTextContainer();
-            container.size = CGSize.init(width: kScreen_Width, height: CGFloat.greatestFiniteMagnitude);
+           
             
             labelHeight?.update(offset: (statusLayout?.textHeight)!)
             content_label.textLayout = statusLayout?.textLayout
             profileView.statusLayoutModel = statusLayout!
+            
+            
         }
+            
     }
     private lazy var content_label:YYLabel = {
         let label = YYLabel()
@@ -77,6 +81,21 @@ class SWHomeTableViewCell: UITableViewCell {
             labelHeight =  make.height.equalTo(100).priority(800).constraint
             
         }
+        //3.0图片
+        
+//        let picViews:NSMutableArray = NSMutableArray()
+//        
+//        for  _ in 0..<9 {
+//            let imageView = YYControl()
+//            imageView.size = CGSize.init(width: 100.0, height: 100.0)
+//            imageView.isHidden = true
+//            imageView.clipsToBounds = true
+//            imageView.backgroundColor = kWBCellHighlightColor;
+//            imageView.isExclusiveTouch = true;
+//            
+//        }
+//        _picViews = picViews
+
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

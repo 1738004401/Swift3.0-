@@ -13,7 +13,7 @@ class RootTabBarController: UITabBarController {
     var tabbar_normal_imgs = ["tabbar_home","tabbar_message_center"]
     var tabbar_selected_imgs = ["tabbar_home_highlighted","tabbar_message_center_highlighted"]
     var tabbar_titles = ["首页","UIKit"]
-    var tabbar_controllernames = ["SWHomeViewController","UIKitStudyController"]
+    var tabbar_controllernames = ["HomeFrameVC","UIKitStudyController"]
     private lazy var custom_controllers:[UIViewController] = {
         return [UIViewController]()
     }()

@@ -14,7 +14,7 @@ typealias globalBlock3 = (String) -> Void
 typealias globalBlock4 = () -> String
 typealias globalBlock5 = (String) -> String
 
-class BiBaoController: UIViewController {
+class BiBaoController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

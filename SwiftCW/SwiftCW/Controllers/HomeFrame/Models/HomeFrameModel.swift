@@ -1,8 +1,8 @@
 //
-//  SWHomeLayoutModel.swift
+//  HomeFrameModel.swift
 //  SwiftCW
 //
-//  Created by YiXue on 17/3/15.
+//  Created by YiXue on 17/3/24.
 //  Copyright © 2017年 赵刘磊. All rights reserved.
 //
 
@@ -10,24 +10,70 @@ import UIKit
 import Foundation
 import YYKit
 
-
-
-class SWHomeLayoutModel: NSObject {
-    var statusModel : SWHomeStatusModel!
-    var textLayout : YYTextLayout?
-    var nameTextLayout : YYTextLayout?
-    var sourceTextLayout:YYTextLayout?
+class HomeFrameModel: NSObject {
     
-    var  textHeight:CGFloat?
+
+    var statusModel : SWHomeStatusModel!
+    
+    
+    // 顶部留白
+    var marginTop : CGFloat = kWBCellTopMargin//顶部灰色留白
+    
+    // 标题栏
+    var titleHeight : CGFloat = 0//标题栏高度，0为没标题栏
+    var  titleTextLayout:YYTextLayout?// 标题栏
+    
+    // 个人资料
+    var profileHeight : CGFloat = 0//个人资料高度(包括留白)
+    var  nameTextLayout:YYTextLayout? // 名字
+    var  sourceTextLayout:YYTextLayout?// 时间/来源
+    
+    
+    // 文本
+    var textHeight : CGFloat = 0
+    var textLayout:YYTextLayout?
+    
+    
+    // 图片
+    var picHeight : CGFloat = 0//图片高度，0为没图片
+    var picSize:CGSize = CGSize.init(width: 0, height: 0)
+    
+    
+    
+    // 转发
+    var retweetHeight : CGFloat=0 //转发高度，0为没转发
+    var retweetTextHeight : CGFloat = 0
+    var  retweetTextLayout:YYTextLayout?
+    
+    var retweetPicHeight : CGFloat = 0
+    var retweetPicSize:CGSize?
+    var retweetCardHeight : CGFloat = 0
+    var retweetCardTextLayout:YYTextLayout?
+    var retweetCardTextRect : CGRect?
+    
+    //底部留白
+    var marginBottom : CGFloat = kWBCellToolbarBottomMargin
+    var height : CGFloat = 0
     
     
     init(status:SWHomeStatusModel) {
+        
         super.init()
         statusModel = status
+        layout()
+        
+    }
+    private func layout(){
+        layoutProfile()
+        layoutText()
+        layoutPics()
+        profileHeight = kWBCellProfileHeight
+        height = profileHeight + textHeight + picHeight+20
+    
+    }
+    private func layoutProfile(){
         layoutName()
         layoutSource()
-        layoutText()
-       
     }
     private func layoutName(){
         let nameText:NSMutableAttributedString  = NSMutableAttributedString.init(string: (statusModel?.user!.name)!)
@@ -40,6 +86,8 @@ class SWHomeLayoutModel: NSObject {
         
         container.maximumNumberOfRows = 1;
         nameTextLayout = YYTextLayout.sw_layout(with: container, text: nameText)
+        
+        
     }
     
     private func layoutSource(){
@@ -92,21 +140,21 @@ class SWHomeLayoutModel: NSObject {
                         
                         from.setColor(UIColor.orange, range: range)
                     }
-
+                    
                 }
                 
                 sourceText.append(from)
             }
-
             
-        
+            
+            
         }
         
         
         let container:YYTextContainer = YYTextContainer(size: CGSize.init(width: kWBCellNameWidth, height: 9999))
         container.maximumNumberOfRows = 1;
         sourceTextLayout = YYTextLayout.sw_layout(with: container, text: sourceText)
-
+        
     }
     
     private func layoutText(){
@@ -190,7 +238,7 @@ class SWHomeLayoutModel: NSObject {
             
             
         }
-
+        
         // 匹配 #用户名#
         let topicResults:[NSTextCheckingResult]! = WBStatusHelper.regexTopic().matches(in: text.string, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: text.rangeOfAll())
         for at in topicResults{
@@ -219,9 +267,9 @@ class SWHomeLayoutModel: NSObject {
             
             
         }
-
+        
         // 匹配 @用户名
-
+        
         let atResults:[NSTextCheckingResult]! = WBStatusHelper.regexAt().matches(in: text.string, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: text.rangeOfAll())
         for at in atResults{
             if at.range.location == NSNotFound && at.range.length <= 1 {
@@ -233,7 +281,7 @@ class SWHomeLayoutModel: NSObject {
                 // 高亮状态
                 let highlight:YYTextHighlight! = YYTextHighlight()
                 highlight.setBackgroundBorder(highlightBorder)
-
+                
                 let originStr:String = text.string
                 let start = originStr.index(originStr.startIndex, offsetBy: at.range.location )
                 let end = originStr.index(start, offsetBy: at.range.length)
@@ -246,8 +294,8 @@ class SWHomeLayoutModel: NSObject {
                 text.setTextHighlight(highlight, range: at.range)
             }
             
-           
-
+            
+            
         }
         
         // 匹配 [表情]
@@ -286,14 +334,70 @@ class SWHomeLayoutModel: NSObject {
             text.replaceCharacters(in: range, with: emoText)
             emoClipLength = emoClipLength + range.length - 1;
         }
-
-                
+        
+        
         return text;
+        
+    }
+    
+    private func layoutPics(){
+        picSize = CGSize.zero
+        picHeight = 0.0
+        if statusModel.pic_urls?.count == 0{
+            return;
+        }
+        
+        
+        var len1_3 :CGFloat = (kWBCellContentWidth + kWBCellPaddingPic) / 3 - kWBCellPaddingPic
+        len1_3 = CGFloatPixelRound(len1_3);
+        
+        switch statusModel.pic_urls!.count {
+        case 1:
+            picSize = CGSize.init(width: 200, height: 200)
+            picHeight = 200;
 
+            break;
+        case 2:
+            picSize = CGSize.init(width: len1_3, height: len1_3)
+            picHeight = len1_3;
+            break;
+        case 3:
+            picSize = CGSize.init(width: len1_3, height: len1_3)
+            picHeight = len1_3;
+            break;
+        case 4:
+            picSize = CGSize.init(width: len1_3, height: len1_3)
+            picHeight = 2*len1_3 + kWBCellPaddingPic
+            break;
+        case 5:
+            picSize = CGSize.init(width: len1_3, height: len1_3)
+            picHeight = 2*len1_3 + kWBCellPaddingPic
+            break;
+        case 6:
+            picSize = CGSize.init(width: len1_3, height: len1_3)
+            picHeight = 2*len1_3 + kWBCellPaddingPic
+            break;
+        case 7:
+            picSize = CGSize.init(width: len1_3, height: len1_3)
+            picHeight = 3*len1_3 + 2*kWBCellPaddingPic
+            break;
+        case 8:
+            picSize = CGSize.init(width: len1_3, height: len1_3)
+            picHeight = 3*len1_3 + 2*kWBCellPaddingPic
+            break;
+        case 9:
+            picSize = CGSize.init(width: len1_3, height: len1_3)
+            picHeight = 3*len1_3 + 2*kWBCellPaddingPic
+            break;
+        default:
+            break;
+        }
+        
+       
     }
     
     override init() {
         super.init()
     }
-    
+
 }
