@@ -238,7 +238,6 @@ class HomeFrameModel: NSObject {
                 
                 
                 let emoText:NSAttributedString! = NSAttributedString.init(string: "网页链接", attributes: [NSFontAttributeName:font])
-//                NSAttributedString.init(string: "网页链接", attributes: [NSFontAttributeName:font])
                 text.replaceCharacters(in: range, with: emoText)
                 urlClipLength = urlClipLength + range.length - 4;
 
@@ -388,6 +387,7 @@ class HomeFrameModel: NSObject {
         
         var len1_3 :CGFloat = (kWBCellContentWidth + kWBCellPaddingPic) / 3 - kWBCellPaddingPic
         len1_3 = CGFloatPixelRound(len1_3);
+        
         
         switch statusModel.pic_urls!.count {
         case 1:

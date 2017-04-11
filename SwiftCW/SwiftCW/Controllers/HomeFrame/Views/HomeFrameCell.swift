@@ -72,7 +72,6 @@ class HomeFrameCell: UITableViewCell {
                imageView.isHidden = false;
                 let pic:NSDictionary? = model.statusModel.pic_urls?[i] as? NSDictionary
                 
-                print(URL.init(string: pic?.object(forKey: "thumbnail_pic") as! String))
                 
                 imageView.layer.setImageWith(URL.init(string: pic?.object(forKey: "thumbnail_pic") as! String), placeholder: nil)
 //                imageView.layer.setImageWith(URL.init(string: pic?.object(forKey: "thumbnail_pic") as! String), placeholder: nil, options: YYWebImageOptions.avoidSetImage, completion: { (image, url, from, stage, error) in

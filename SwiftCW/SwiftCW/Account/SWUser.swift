@@ -25,9 +25,10 @@ class SWUser: NSObject {
     }
     
     open class func curUser() -> SWUser?{
-        let dict : [String:Any?]? = UserDefaults.standard.dictionary(forKey: SWUserJson) as? [String:Any?]
+//        let dict : [String:Any?]? = UserDefaults.standard.dictionary(forKey: SWUserJson) as? [String:Any?]
+        let dict : [String:Any?]? = UserDefaults.standard.dictionary(forKey: SWUserJson) 
         if dict?["uid"] != nil {
-            let user = SWUser.init(dict: dict! as [String : AnyObject?])
+            let user = SWUser.init(dict: dict! )
             return user
         }
         
@@ -36,7 +37,7 @@ class SWUser: NSObject {
     override init(){
         
     }
-    init(dict:[String:AnyObject?]) {
+    init(dict:[String:Any?]) {
         super.init()
         access_token = dict["access_token"]! as! String?
         expires_in = dict["expires_in"]! as! Int64?
